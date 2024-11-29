@@ -32,11 +32,15 @@ resizeWindow(direction) {
 }
 
 pinWindow(targetWindow := "A") {
-	tWnd := WinActive(targetWindow)
-	title := WinGetTitle("ahk_id " tWnd)
+    activeWindow := WinExist(targetWindow)
+
+    ; generate new title
+	title := WinGetTitle("ahk_id " activeWindow)
 	newTitle := InStr(title, " - Priotised") ? RegExReplace(title, " - Priotised$") : title " - Priotised"
-	WinSetTitle(newTitle, "ahk_id " tWnd)
-	WinSetAlwaysOnTop(-1, "ahk_id " tWnd) 
+	WinSetTitle(newTitle, "ahk_id " activeWindow)
+
+    ; set always on top
+	WinSetAlwaysOnTop(-1, "ahk_id " activeWindow) 
 }
 
 hideTitle(targetWindow := "A") {

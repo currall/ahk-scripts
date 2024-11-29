@@ -3,6 +3,7 @@
 #SingleInstance Force
 
 #include personal.ahk
+#include programs.ahk
 #include window.ahk
 
 ; #: windows
@@ -12,10 +13,11 @@
 
 ; CTRL + ALT
 ^!e:: SendText(email) ; ctrl + alt + e: input email address
-^!t:: Run("cmd.exe", EnvGet("USERPROFILE")) ; ctrl + alt + t: Launch cmd
-^!+t:: Run('powershell -Command "Start-Process cmd.exe -Verb RunAs"') ; ctrl + alt + shift + t: launch cmd as admin
+^!t:: terminal() ; ctrl + alt + t: Launch cmd
+^!+t:: terminal(true) ; ctrl + alt + shift + t: launch cmd as admin
 
 ; WIN
+#e:: explorer()
 #i:: Run("control.exe") ; win + i: replace settings with control panel
 #q:: hideTitle() ; win + q: hide window title bar
 #s:: search() ; win + s: replace windows search with everything search
@@ -36,7 +38,3 @@ CapsLock:: search() ; replace caps lock with search
 
 #+Left::resizeWindow("left")
 #+Right::resizeWindow("right")
-
-search() {
-    Run("C:\Program Files\Everything\Everything.exe")
-}
