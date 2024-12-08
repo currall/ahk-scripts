@@ -1,13 +1,15 @@
 #Requires AutoHotkey v2.0
 
+taskbar_height := 48
+
 moveWindow(position, size) {
     WinRestore("A")
     If (position = "center"){
         WinMove(size, 60, A_ScreenWidth-(size*2), A_ScreenHeight-168,"A")
     } Else If (position = "left") {
-        WinMove(0, 0, A_ScreenWidth-size, A_ScreenHeight-48,"A")
+        WinMove(0, 0, A_ScreenWidth-size, A_ScreenHeight-taskbar_height,"A")
     } Else If (position = "right") {
-        WinMove(A_ScreenWidth-size, 0, size, A_ScreenHeight-48,"A")
+        WinMove(A_ScreenWidth-size, 0, size, A_ScreenHeight-taskbar_height,"A")
     }
 }
 
