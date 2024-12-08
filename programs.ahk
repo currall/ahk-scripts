@@ -1,7 +1,11 @@
 #Requires AutoHotkey v2.0
 
-search() {
-    Run("C:\Program Files\Everything\Everything.exe")
+search(targetWindow:="A") {
+    if (WinActive("ahk_class EVERYTHING")) {
+        Send("!{f4}")
+    } else {
+        Run("C:\Program Files\Everything\Everything.exe")
+    }
 }
 
 terminal(targetWindow:="A",admin:=false) {
@@ -11,13 +15,13 @@ terminal(targetWindow:="A",admin:=false) {
     } else {
         if (WinActive("ahk_class CabinetWClass")) { ; in explorer
             Send("^l")
-            Sleep 100
+            Sleep 50
             SendText("cmd")
-            Sleep 100
+            Sleep 50
             Send("{Enter}")
         } else if (WinActive("ahk_class ConsoleWindowClass")) { ; in cmd
             SendText("start cmd")
-            Sleep 100
+            Sleep 50
             Send("{Enter}")
         } else {
             Run("cmd.exe", EnvGet("USERPROFILE"))
@@ -29,8 +33,12 @@ terminal(targetWindow:="A",admin:=false) {
 explorer(targetWindow:="A") {
     if (WinActive("ahk_class ConsoleWindowClass")) { ; in cmd
         SendText("start explorer .")
-        Sleep 100
+        Sleep 50
         Send("{Enter}")
+    } else if (WinActive("ahk_exe Code.exe")) { ; in vscode
+        Send("^+e")
+        Sleep 50
+        Send("+!r")
     } else {
         Run("explorer.exe")
     }
