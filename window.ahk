@@ -5,7 +5,7 @@ taskbar_height := 48
 moveWindow(position, size) {
     WinRestore("A")
     If (position = "center"){
-        WinMove(size, 60, A_ScreenWidth-(size*2), A_ScreenHeight-168,"A")
+        WinMove(size, 100, A_ScreenWidth-(size*2), A_ScreenHeight-248,"A")
     } Else If (position = "left") {
         WinMove(0, 0, A_ScreenWidth-size, A_ScreenHeight-taskbar_height,"A")
     } Else If (position = "right") {

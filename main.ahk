@@ -35,15 +35,15 @@ CapsLock:: search() ; replace caps lock with search
 >^Down:: Send("{PgDn}") ; right ctrl + down: pgdn
 
 ; Window Management
-#Escape:: moveWindow("center",150)
+#Escape:: moveWindow("center",300)
 #F1:: moveWindow("left",900)
 #F2:: moveWindow("right",900)
 #F11:: fullscreen()
-#Left:: moveWindow("left",A_ScreenWidth/2)
-#Right:: moveWindow("right",A_ScreenWidth/2)
-#Up:: WinMaximize("A")
-#Down:: WinMinimize("A")
+
+;#Left:: moveWindow("left",A_ScreenWidth/2)
+;#Right:: moveWindow("right",A_ScreenWidth/2)
+;#Up:: WinMaximize("A")
+;#Down:: WinMinimize("A")
 
 #+Left::resizeWindow("left")
 #+Right::resizeWindow("right")
-
